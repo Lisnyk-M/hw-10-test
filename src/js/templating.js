@@ -32,6 +32,7 @@ switchTheme.addEventListener('change', () => {
 })
 
 console.log('theme:', localStorage.getItem('theme'));
+
 if (localStorage.getItem('theme')) {
     if (localStorage.getItem('theme') == 'dark') {
         switchTheme.checked = true;
