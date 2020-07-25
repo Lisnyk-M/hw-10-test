@@ -7,8 +7,12 @@ const Theme = {
 };
 
 const markup = itemsTemplate(recepies);
-const galleryRef = document.querySelector('.js-menu');
-galleryRef.insertAdjacentHTML('beforeend', markup);
+const refs = {
+    galleryRef: document.querySelector('.js-menu'),
+    switchTheme: document.querySelector('.js-switch-input')
+}
+
+refs.galleryRef.insertAdjacentHTML('beforeend', markup);
 
 
 
@@ -17,12 +21,12 @@ const themeChange = (addTheme, subTheme) => {
     document.body.classList.remove(subTheme);
 }
 
-const switchTheme = document.querySelector('.js-switch-input');
 
 
-// console.log('switchTheme: ', switchTheme.checked);
-switchTheme.addEventListener('change', () => {
-    if (switchTheme.checked) {
+
+// console.log('refs.switchTheme: ', refs.switchTheme.checked);
+refs.switchTheme.addEventListener('change', () => {
+    if (refs.switchTheme.checked) {
         themeChange(Theme.DARK, Theme.LIGHT)
         localStorage.setItem('theme', 'dark');
     } else {
@@ -35,11 +39,11 @@ console.log('theme:', localStorage.getItem('theme'));
 
 if (localStorage.getItem('theme')) {
     if (localStorage.getItem('theme') == 'dark') {
-        switchTheme.checked = true;
+        refs.switchTheme.checked = true;
         themeChange(Theme.DARK, Theme.LIGHT);
     }
     else {
-        switchTheme.checked = false;
+        refs.switchTheme.checked = false;
         themeChange(Theme.LIGHT, Theme.DARK);
     }
 }
